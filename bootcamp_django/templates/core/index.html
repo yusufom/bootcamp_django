@@ -14,15 +14,40 @@
     
     <div>
         {% for i in queryset %}
-        {% if i.price < 70 %}
-        <p>{{i.name}} - N{{i.price}}</p>
-        {% elif i.price > 70 %}
-        <p>{{i.name}} - ${{i.price}}</p>
-        {% else %}
-        <p>no</p>
-        {% endif %}
+            {% if i.price < 70 %}
+                <p>{{i.name}} - N{{i.price}}</p>
+                {% elif i.price > 70 %}
+                <p>{{i.name}} - ${{i.price}}</p>
+                {% else %}
+                <p>no</p>
+            {% endif %}
         {% endfor %}
     </div>
+<hr>
+    <div>
+        {% for i in get_course %}
+        <p>{{i.name}} - N{{i.price}}</p>
+        {% endfor %}
+    </div>
+    <hr>
+    {{course}}
+
+
+    {% comment %} <form action="" method='post'>
+        <label for="fname">Name:</label><br>
+        <input type="text" id="fname" name="fname" value=""><br>
+        <label for="lname">Price:</label><br>
+        <input type="text" id="lname" name="lname" value=""><br><br>
+        <input type="submit" value="Submit">
+      </form>  {% endcomment %}
+
+
+      <form method='post'>
+        {% csrf_token %}
+
+        {{course_form.as_p}}
+        <input type="submit" value="Submit">
+      </form>
 
     <!-- {% if i in queryset %}
         {% endif %} -->
