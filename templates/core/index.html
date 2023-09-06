@@ -9,28 +9,17 @@
 
 
 
-<div style="color: red">
-    This is the HTML file for home {{ one }} - {{two}} {{three}} {{four}}
+<div>
     
     <div>
         {% for i in queryset %}
-            {% if i.price < 70 %}
-                <p>{{i.name}} - N{{i.price}}</p>
-                {% elif i.price > 70 %}
-                <p>{{i.name}} - ${{i.price}}</p>
-                {% else %}
-                <p>no</p>
-            {% endif %}
+            <p>
+                <a href="{% url 'Course-Details' i.id %}" >{{i.name}} - ${{i.price}}</a>
+                <a href="{% url 'Confirm-Course-Delete' i.id %}" >Delete</a>
+                <a href="{% url 'Course-Update' i.id %}" >Update</a>
+            </p>
         {% endfor %}
     </div>
-<hr>
-    <div>
-        {% for i in get_course %}
-        <p>{{i.name}} - N{{i.price}}</p>
-        {% endfor %}
-    </div>
-    <hr>
-    {{course}}
 
 
     {% comment %} <form action="" method='post'>
@@ -42,10 +31,20 @@
       </form>  {% endcomment %}
 
 
-      <form method='post'>
+      {% comment %} <form method='post'>
         {% csrf_token %}
 
         {{course_form.as_p}}
+        <input type="submit" value="Submit">
+      </form> {% endcomment %}
+
+
+      <hr>
+
+      <form method='post'>
+        {% csrf_token %}
+
+        {{course_model_form.as_p}}
         <input type="submit" value="Submit">
       </form>
 

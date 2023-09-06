@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %}
+    <title>Index</title>
+{% endblock title %}
+
+{% block content %}
+<p>Name: {{ course.name }}</p>
+<p>Price: ${{course.price}}</p>
+{% endblock content%}

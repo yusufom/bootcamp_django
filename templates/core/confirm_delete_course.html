@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %}
+    <title>Index</title>
+{% endblock title %}
+
+{% block content %}
+<p>Are you sure you want to delete this course {{course.name}} ?</p>
+<a href="{% url 'Course-Delete' course.id %}">Yes, Delete</a>
+<a href='/'>No, go back</a>
+{% endblock content%}
